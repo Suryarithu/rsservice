@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RS Water Cleaning Services</title>
+  <meta name="description" content="Tank cleaning, sump cleaning, RO plant installation, plumbing work — Chennai." />
+  <style>
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f8fc;color:#222}
+    header{background:#003366;color:#fff;padding:20px;text-align:center}
+    header h1{margin:0;font-size:24px}
+    header p{margin:5px 0;font-size:14px}
+    nav{margin-top:10px}
+    nav a{color:#fff;text-decoration:none;margin:0 8px;font-weight:bold}
+    .hero{background:linear-gradient(rgba(0,51,102,0.8),rgba(0,51,102,0.8)),url('https://via.placeholder.com/1200x400?text=Water+Cleaning');background-size:cover;color:#fff;padding:60px 20px;text-align:center}
+    .hero h2{margin:0;font-size:32px}
+    .hero p{font-size:18px;margin-top:10px}
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:1000px;margin:40px auto;padding:0 20px}
+    .service{background:#fff;border:1px solid #ddd;border-radius:8px;padding:20px;box-shadow:0 4px 12px rgba(0,0,0,0.08)}
+    .service h3{margin-top:0;color:#003366}
+    .contact{background:#003366;color:#fff;padding:40px 20px;text-align:center}
+    .contact h2{margin-top:0}
+    footer{background:#002244;color:#ccc;text-align:center;padding:14px;font-size:14px}
+    button, .btn{background:#ffcc00;color:#000;padding:10px 16px;border:none;border-radius:6px;cursor:pointer;font-weight:bold;text-decoration:none}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>RS Water Cleaning Services</h1>
+    <p>Tank Cleaning • RO Plant Installation • Sump Cleaning • Plumbing Work</p>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Professional Water Tank & Sump Cleaning</h2>
+    <p>Safe • Reliable • Affordable — Serving Chennai</p>
+    <a href="#contact" class="btn">Book Now</a>
+  </section>
+
+  <section id="services" class="services">
+    <div class="service">
+      <h3>Tank Cleaning</h3>
+      <p>Complete water tank cleaning with anti-bacterial treatment.</p>
+    </div>
+    <div class="service">
+      <h3>RO Plant Installation</h3>
+      <p>Expert setup and maintenance of RO plants for clean drinking water.</p>
+    </div>
+    <div class="service">
+      <h3>Sump Cleaning</h3>
+      <p>Deep cleaning and sludge removal for sumps to ensure safe water.</p>
+    </div>
+    <div class="service">
+      <h3>Plumbing Work</h3>
+      <p>General plumbing services including repair & maintenance.</p>
+    </div>
+    <div class="service">
+  <h3>Sofa Cleaning</h3>
+  <div class="muted">Deep shampoo wash and vacuum for fabric & leather sofas.</div>
+  
+</div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p><strong>Phone:</strong> <a href="tel:+919551769380" style="color:#ffcc00">9551769380</a>, <a href="tel:+917904288412" style="color:#ffcc00">7904288412</a></p>
+    <p><strong>Address:</strong> No.8, 12th Street, Moongil Nagar, Pammal, Chennai - 600 043</p>
+    <form id="contactForm" style="max-width:500px;margin:20px auto;text-align:left">
+      <label>Name</label>
+      <input type="text" name="name" required style="width:100%;padding:10px;margin-bottom:10px;border-radius:4px;border:1px solid #ccc">
+      <label>Phone</label>
+      <input type="tel" name="phone" required style="width:100%;padding:10px;margin-bottom:10px;border-radius:4px;border:1px solid #ccc">
+      <label>Service Needed</label>
+      <select name="service" style="width:100%;padding:10px;margin-bottom:10px;border-radius:4px;border:1px solid #ccc">
+        <option>Tank Cleaning</option>
+        <option>RO Plant Installation</option>
+        <option>Sump Cleaning</option>
+        <option>Plumbing Work</option>
+         <option>Sofas Cleaning</option>
+          <option>Other Work</option>
+      </select>
+      <button type="submit">Submit Request</button>
+      <p id="status" style="margin-top:10px;font-size:14px"></p>
+    </form>
+  </section>
+
+  <footer>
+    © RS Water Cleaning Services — Chennai
+  </footer>
+
+  <script>
+    const form=document.getElementById('contactForm');
+    const status=document.getElementById('status');
+    // Primary WhatsApp number (India) — from visiting card
+    const whatsappNumber = '8110078354'; // country code + number, no + sign
+
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      status.textContent='Preparing WhatsApp message...';
+
+      const fd = new FormData(form);
+      const name = fd.get('name') || 'Customer';
+      const phone = fd.get('phone') || '';
+      const service = fd.get('service') || '';
+
+      const message = `Hello RS Water Cleaning Services, I would like to book a *${service}*.
+Name: ${name}
+Phone: ${phone}
+Please call to confirm.`;
+      const waUrl = `https://wa.me/${whatsappNumber}?text=` + encodeURIComponent(message);
+
+      // open WhatsApp in new tab (web or app). If blocked, show a clickable link.
+      const newWin = window.open(waUrl, '_blank');
+      if (newWin) {
+        status.innerHTML = 'WhatsApp opened — please send the message in the new tab.';
+        form.reset();
+      } else {
+        status.innerHTML = 'Popup blocked. <a href="' + waUrl + '" target="_blank">Click here to open WhatsApp</a>';
+      }
+    });
+  </script>
+</body>
+</html>
